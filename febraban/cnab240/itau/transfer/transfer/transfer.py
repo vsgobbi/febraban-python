@@ -3,7 +3,7 @@ from .segmentA import SegmentA
 from .trailer import Trailer
 
 
-class Payment:
+class Transfer:
 
     def __init__(self):
         self.header = Header()
@@ -38,10 +38,10 @@ class Payment:
 
     def setInfo(self, kind="98", method="41", reason="10"):
         """
-        This method set config information in the payment
+        This method set config information in the transfer
 
         Args:
-            kind:   String - Kind of payment - 98 Diversos, read: NOTES 4
+            kind:   String - Kind of transfer - 98 Diversos, read: NOTES 4
             method: String - Payment method  - 41 TED Outro titular, 43 TED Mesmo titular, 01 ITAU account. read: NOTES 5
             reason: String - Payment reason  - 10 Credito em Conta Corrente, read: NOTES 26
         """

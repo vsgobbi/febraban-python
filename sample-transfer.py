@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-from febraban.cnab240.itau.transfer import Payment, File
+from febraban.cnab240.itau.transfer import Transfer, File
 from febraban.cnab240.user import User, UserAddress, UserBank
 
 
@@ -36,17 +36,17 @@ receiver = User(
 file = File()
 file.setSender(sender)
 
-payment = Payment()
-payment.setSender(sender)
-payment.setReceiver(receiver)
-payment.setAmountInCents("12000")
-payment.setScheduleDate("12102017")
-payment.setInfo(
+transfer = Transfer()
+transfer.setSender(sender)
+transfer.setReceiver(receiver)
+transfer.setAmountInCents("12000")
+transfer.setScheduleDate("12102017")
+transfer.setInfo(
     kind="98",   #Tipo de pagamento - Diversos
     method="41", #TED - Outra titularidade
     reason="10"  #Crédito em Conta Corrente
 )
-payment.setIdentifier("ID1234567890")
-file.add(lot=payment)
+transfer.setIdentifier("ID1234567890")
+file.add(lot=transfer)
 
 file.output(fileName="output.REM", path="/../../")

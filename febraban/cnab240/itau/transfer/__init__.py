@@ -1,4 +1,4 @@
 from .result.parser import PaymentParser
-from .payment.payment import Payment
-from .payment.segmentA import SegmentA
+from .transfer.transfer import Transfer
+from .transfer.segmentA import SegmentA
 from .file.file import File

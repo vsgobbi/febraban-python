@@ -1,24 +1,39 @@
+from collections import namedtuple
 from .libs.middlewares.row import validateFormatter
 from .characterType import numeric, alphaNumeric
+
+RowStruct = namedtuple("RowStruct", ("start", "end", "len", "type", "value"))
+
+defaultCharacters = {
+    numeric: "0",
+    alphaNumeric: " ",
+}
+
+
+def emptyStruct(start, end, characterType):
+    return RowStruct(start, end, end - start, characterType, "")
 
 
 class Row:
 
     @classmethod
     def setStructs(cls, structs, content):
-        for (start, end, len, type, value) in structs:
-            replacement = cls.__formatted(
-                string=str(value),
-                charactersType=type,
-                numberOfCharacters=len,
-                defaultCharacter= {numeric:"0", alphaNumeric:" "}[type]
+        for struct in structs:
+            if isinstance(struct, tuple) and not isinstance(struct, RowStruct):
+                struct = RowStruct(*struct)
+
+            replacement = cls._formatted(
+                string=str(struct.value),
+                charactersType=struct.type,
+                numberOfCharacters=struct.len,
+                defaultCharacter=defaultCharacters[struct.type]
             )
-            content = content[:start] + replacement + content[start+len:]
+            content = content[:struct.start] + replacement + content[struct.start + struct.len:]
         return content
 
     @classmethod
     @validateFormatter
-    def __formatted(cls, string, charactersType, numberOfCharacters, defaultCharacter=" "):
+    def _formatted(cls, string, charactersType, numberOfCharacters, defaultCharacter=" "):
         """
             This method fix the received String and a default complement according the alignment
             and cut the string if it' bigger than number of characters

@@ -5,7 +5,7 @@ from .characterType import numeric, alphaNumeric
 RowStruct = namedtuple("RowStruct", ("start", "end", "len", "type", "value"))
 
 defaultCharacters = {
-    numeric: "0",
+    numeric:      "0",
     alphaNumeric: " ",
 }
 
@@ -46,7 +46,7 @@ class Row:
             Returns:
                 String formatted
         """
-        if type(string) != str:              return defaultCharacter * numberOfCharacters
+        if not isinstance(string, str):      return defaultCharacter * numberOfCharacters
         if len(string) > numberOfCharacters: return string[:numberOfCharacters]
         if charactersType == numeric:        return defaultCharacter * (numberOfCharacters - len(string)) + string
         if charactersType == alphaNumeric:   return string + defaultCharacter * (numberOfCharacters - len(string))

@@ -14,7 +14,7 @@ def emptyStruct(start, end, characterType):
     return RowStruct(start, end, end - start, characterType, "")
 
 
-class Row:
+class Row(object):
 
     @classmethod
     def setStructs(cls, structs, content):

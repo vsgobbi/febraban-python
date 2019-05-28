@@ -63,7 +63,7 @@ class PaymentTest(TestCase):
     def testSegmentJ52DefaultValues(self):
         content = SegmentJ52().content
         self.assertEqual("3", content[7:8])
-        self.assertEqual("00002", content[8:13])
+        self.assertEqual("00001", content[8:13])
         self.assertEqual("J", content[13:14])
         self.assertEqual("000", content[14:17])
         self.assertEqual("52", content[17:19])
@@ -100,7 +100,7 @@ class PaymentTest(TestCase):
         segment.setSenderBank(bank)
         segment.setPositionInLot(4)
         segment.validate()
-        response = "3410004300002J000521000012345678901JOHN SMITH                              0000000000000000                                        0000000000000000                                                                                             "
+        response = "3410004300001J000521000012345678901JOHN SMITH                              0000000000000000                                        0000000000000000                                                                                             "
         self.assertEqual(response, segment.content)
 
     def testTrailerSets(self):

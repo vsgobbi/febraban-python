@@ -24,7 +24,7 @@ class SegmentJ52(object):
 
             # Fixed fields
             RowStruct(7, 8, 1, numeric, "3"),  # TIPO DE REGISTRO
-            RowStruct(8, 13, 5, numeric, 2),  # INDEX DO REGISTRO
+            RowStruct(8, 13, 5, numeric, 1),  # INDEX DO REGISTRO
             RowStruct(13, 14, 1, alphaNumeric, "J"),  # CÓDIGO DE SEGMENTO
             RowStruct(14, 17, 3, numeric, "000"),  # TIPO DE MOVIMENTO
             RowStruct(17, 19, 2, numeric, "52"),  # IDENTIFICAÇÃO DO REGISTRO OPCIONAL

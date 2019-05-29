@@ -15,6 +15,7 @@ class Header(object):
         self.missingFields = {
             "Sender",
             "SenderBank",
+            "GeneratedDate",
         }
 
     def defaultValues(self):

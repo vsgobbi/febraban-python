@@ -27,7 +27,7 @@ class Trailer(object):
 
             # Fixed fields
             RowStruct(7, 8, 1, numeric, "5"),  # TIPO DE REGISTRO
-            RowStruct(17, 23, 6, numeric, "1"),  # QUANTIDADE DE REGISTROS NO LOTE - FIXADO EM 1
+            RowStruct(17, 23, 6, numeric, "4"),  # QUANTIDADE DE REGISTROS NO LOTE - FIXADO EM 4
         ]
         self.content = Row.setStructs(structs=structure, content=self.content)
 

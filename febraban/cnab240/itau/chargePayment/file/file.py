@@ -16,10 +16,10 @@ class File(object):
         self.lots.append(lot)
 
     def toString(self, currentDatetime=None):
-        self.header.generatedDate = currentDatetime or datetime.now()
-        self.trailer.totalLotCount = len(self.lots)
+        self.header.setGeneratedFileDate(currentDatetime or datetime.now())
+        self.trailer.setNumberOfLotsAndRegisters(len(self.lots))
 
-        lotsContent = "\r\n".join(lot.content for lot in self.lots)
+        lotsContent = "\r\n".join(lot.toString() for lot in self.lots)
         return "%s\r\n%s\r\n%s\r\n" % (self.header.content, lotsContent, self.trailer.content)
 
     def setSender(self, user):
